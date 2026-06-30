@@ -250,6 +250,33 @@ const res = await client.unary("Echo", { message: "hi" }, {
 });
 ```
 
+## Command-line tools (`cmd/`)
+
+DenoForge ships a small set of CLIs, runnable with `deno run` or the bundled tasks:
+
+- **`qdeno`** — scaffolds a new DenoForge service (HTTP or gRPC) into a directory.
+
+  ```sh
+  deno task qdeno new http my-api
+  deno task qdeno new grpc my-svc --dir ./services/my-svc
+  ```
+
+- **`deno-openssl`** — key-pair generation, self-signed certificates and PEM handling, built on Web
+  Crypto (certificates use `@peculiar/x509`, loaded lazily).
+
+  ```sh
+  deno task deno-openssl keypair --algorithm ed25519 --out id
+  deno task deno-openssl cert --name "CN=localhost" --days 365 --out localhost
+  deno task deno-openssl pem-info id.key.pem
+  ```
+
+- **`example`** — a runnable demo that boots an HTTP **and** a gRPC server wired with logging + JWT
+  security and graceful shutdown.
+
+  ```sh
+  deno task example
+  ```
+
 ## Testing
 
 ```sh
@@ -312,7 +339,11 @@ DenoForge/
 │   ├── server/grpc/{server,interceptors}.ts
 │   ├── proto/{methods.proto,loader.ts}
 │   └── mod.ts
-└── examples/              # runnable demos
+├── cmd/                   # command-line tools
+│   ├── qdeno/               # service scaffolder
+│   ├── deno-openssl/        # key/cert/PEM tooling
+│   └── example/           # runnable HTTP + gRPC demo
+└── examples/              # focused per-module demos
 ```
 
 ## Development

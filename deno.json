@@ -23,7 +23,7 @@
     "@grpc/proto-loader": "npm:@grpc/proto-loader@^0.7.13"
   },
   "tasks": {
-    "check": "deno check mod.ts encrypt/aws-kms/mod.ts encrypt/azure-key-vault/mod.ts encrypt/gcp-kms/mod.ts examples/*.ts",
+    "check": "deno check mod.ts encrypt/aws-kms/mod.ts encrypt/azure-key-vault/mod.ts encrypt/gcp-kms/mod.ts examples/*.ts cmd/qdeno/main.ts cmd/deno-openssl/main.ts cmd/example/main.ts",
     "test": "deno test -A",
     "cov": "rm -rf coverage && deno test -A --coverage=coverage && deno coverage coverage",
     "cov:html": "deno coverage coverage --html",
@@ -34,7 +34,10 @@
     "example:logger": "deno run examples/logger.ts",
     "example:tools": "deno run examples/tools.ts",
     "example:server": "deno run --allow-net examples/server.ts",
-    "example:grpc": "deno run -A examples/grpc.ts"
+    "example:grpc": "deno run -A examples/grpc.ts",
+    "example": "deno run -A cmd/example/main.ts",
+    "qdeno": "deno run -A cmd/qdeno/main.ts",
+    "deno-openssl": "deno run -A cmd/deno-openssl/main.ts"
   },
   "compilerOptions": {
     "strict": true,
