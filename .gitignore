@@ -1,0 +1,12 @@
+.deno/
+deno.lock
+.idea/
+.vscode/
+.DS_Store
+*.log
+coverage/
+**/.codex
+**/.claude
+**/CLAUDE.md
+**/AGENTS.md
+push.txt
